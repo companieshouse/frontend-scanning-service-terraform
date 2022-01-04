@@ -22,6 +22,7 @@ module "fes_app_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+  
   custom_statements = [
     {
       sid    = "AllowAccessToReleaseBucket",
@@ -38,4 +39,5 @@ module "fes_app_profile" {
       ]
     }
   ]
+  
 }
