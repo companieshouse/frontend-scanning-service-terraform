@@ -21,7 +21,29 @@ module "fes_rds_security_group" {
       cidr_blocks = join(",", concat(local.admin_cidrs, var.fes_rds_onpremise_access))
     }
   ]
-  ingress_with_source_security_group_id = []
+  ingress_with_source_security_group_id = [
+    {
+      from_port                = 1521
+      to_port                  = 1521
+      protocol                 = "tcp"
+      description              = "Frontend EWF"
+      source_security_group_id = data.aws_security_group.ewf_fe_asg.id
+    },
+    {
+      from_port                = 1521
+      to_port                  = 1521
+      protocol                 = "tcp"
+      description              = "Backend EWF"
+      source_security_group_id = data.aws_security_group.ewf_bep_asg.id
+    },
+    {
+      from_port                = 1521
+      to_port                  = 1521
+      protocol                 = "tcp"
+      description              = "Frontend Tuxedo EWF"
+      source_security_group_id = data.aws_security_group.ewf_fe_tux.id
+    }
+  ]
 
   egress_rules = ["all-all"]
 }

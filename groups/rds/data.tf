@@ -19,6 +19,27 @@ data "aws_security_group" "rds_shared" {
   }
 }
 
+data "aws_security_group" "ewf_fe_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-ewf-fe-asg*"]
+  }
+}
+
+data "aws_security_group" "ewf_fe_tux" {
+  filter {
+    name   = "tag:Name"
+    values = ["ewf-frontend-tuxedo-${var.environment}"]
+  }
+}
+
+data "aws_security_group" "ewf_bep_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-ewf-bep-asg*"]
+  }
+}
+
 data "aws_route53_zone" "private_zone" {
   name         = local.internal_fqdn
   private_zone = true
