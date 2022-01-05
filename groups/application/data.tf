@@ -66,8 +66,8 @@ data "vault_generic_secret" "security_kms_keys" {
 }
 
 data "aws_route53_zone" "private_zone" {
- name         = local.internal_fqdn
- private_zone = true
+  name         = local.internal_fqdn
+  private_zone = true
 }
 
 data "aws_acm_certificate" "acm_cert" {
@@ -79,7 +79,7 @@ data "vault_generic_secret" "fes_ec2_data" {
 }
 
 data "vault_generic_secret" "fes_app_data" {
- path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/app"
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/app"
 }
 
 # ------------------------------------------------------------------------------
