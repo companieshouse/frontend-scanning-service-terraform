@@ -8,30 +8,56 @@ account     = "hstg"
 region      = "euw2"
 environment = "staging"
 
-# RDS Instance settings
-identifier                   = "abbyy"
-name                         = "abbyy"
-instance_class               = "db.m5.large"
-allocated_storage            = 25
-backup_retention_period      = 2
-multi_az                     = true
-rds_maintenance_window       = "Wed:00:00-Wed:03:00"
-rds_backup_window            = "03:00-06:00"
-performance_insights_enabled = false
+###############################
+# ABBYY RDS Instance settings #
+###############################
 
-# RDS Engine settings
-major_engine_version       = "12.1"
-engine_version             = "12.1.0.2.v24"
-license_model              = "license-included"
-auto_minor_version_upgrade = true
+abbyy_identifier                 = "abbyy"
+abbyy_name                       = "abbyy"
+abbyy_instance_class             = "db.m5.large"
+abbyy_allocated_storage          = 25
+abbyy_backup_retention_period    = 2
+abbyy_rds_engine                 = "oracle-se2"
+abbyy_major_engine_version       = "12.1"
+abbyy_engine_version             = "12.1.0.2.v25"
+abbyy_license_model              = "license-included"
+abbyy_auto_minor_version_upgrade = true
 
-rds_onpremise_access = [
+abbyy_rds_onpremise_access = [
   "10.65.2.0/24",
   "10.65.66.0/24",
   "10.65.130.0/24",
   "192.168.70.0/24",
   "192.168.90.0/24"
 ]
+
+#############################
+# FES RDS Instance settings #
+#############################
+
+fes_identifier                 = "fes"
+fes_name                       = "fes"
+fes_instance_class             = "db.m5.large"
+fes_allocated_storage          = 300
+fes_backup_retention_period    = 2
+fes_rds_engine                 = "oracle-se2"
+fes_major_engine_version       = "12.1"
+fes_engine_version             = "12.1.0.2.v25"
+fes_license_model              = "license-included"
+fes_auto_minor_version_upgrade = true
+
+fes_rds_onpremise_access = [
+  "192.168.70.0/24",
+  "192.168.90.0/24"
+]
+
+################################
+# Common RDS Instance settings #
+################################
+
+multi_az                = true
+rds_maintenance_window  = "Wed:00:00-Wed:03:00"
+rds_backup_window       = "03:00-06:00"
 
 # RDS logging
 rds_log_exports = [
@@ -113,3 +139,5 @@ parameter_group_settings = [
       value = "AUTO"
     },
 ]
+
+
