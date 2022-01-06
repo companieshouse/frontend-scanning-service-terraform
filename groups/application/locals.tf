@@ -2,7 +2,8 @@ locals {
   internal_cidrs = values(data.vault_generic_secret.internal_cidrs.data)
   s3_releases    = data.vault_generic_secret.s3_releases.data
   fes_ec2_data   = data.vault_generic_secret.fes_ec2_data.data
-  fes_app_data   = data.vault_generic_secret.fes_app_data.data_json
+#  fes_app_data   = data.vault_generic_secret.fes_app_data.data_json
+  fes_app_data   = data.vault_generic_secret.fes_app_data.data
 
   kms_keys_data          = data.vault_generic_secret.kms_keys.data
   security_kms_keys_data = data.vault_generic_secret.security_kms_keys.data
@@ -32,6 +33,9 @@ locals {
     region                     = var.aws_region
     cw_log_files               = local.fes_app_cw_logs
     cw_agent_user              = "root"
+    tomcat_admin_user          = local.fes_app_data["tomcat-admin-user"]
+    tomcat_admin_password      = local.fes_app_data["tomcat-admin-pass"]
+
   }
 
   default_tags = {
