@@ -1,12 +1,12 @@
 # Account details
-aws_profile = "heritage-staging-eu-west-2"
+aws_profile = "heritage-development-eu-west-2"
 aws_region  = "eu-west-2"
-aws_account = "heritage-staging"
+aws_account = "heritage-development"
 
 # Account shorthand
-account     = "hstg"
+account     = "hdev"
 region      = "euw2"
-environment = "staging"
+environment = "development"
 
 ###############################
 # ABBYY RDS Instance settings #
@@ -14,7 +14,7 @@ environment = "staging"
 
 abbyy_identifier                 = "abbyy"
 abbyy_name                       = "abbyy"
-abbyy_instance_class             = "db.m5.large"
+abbyy_instance_class             = "db.t3.medium"
 abbyy_allocated_storage          = 25
 abbyy_backup_retention_period    = 2
 abbyy_rds_engine                 = "oracle-se2"
@@ -37,8 +37,8 @@ abbyy_rds_onpremise_access = [
 
 fes_identifier                 = "fes"
 fes_name                       = "fes"
-fes_instance_class             = "db.m5.large"
-fes_allocated_storage          = 300
+fes_instance_class             = "db.t3.medium"
+fes_allocated_storage          = 30
 fes_backup_retention_period    = 2
 fes_rds_engine                 = "oracle-se2"
 fes_major_engine_version       = "12.1"
@@ -55,9 +55,9 @@ fes_rds_onpremise_access = [
 # Common RDS Instance settings #
 ################################
 
-multi_az                = true
-rds_maintenance_window  = "Wed:00:00-Wed:03:00"
-rds_backup_window       = "03:00-06:00"
+multi_az                = false
+rds_maintenance_window  = "Thu:00:00-Wed:03:00"
+rds_backup_window       = "00:00-03:00"
 
 # RDS logging
 rds_log_exports = [

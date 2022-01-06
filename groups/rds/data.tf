@@ -19,6 +19,34 @@ data "aws_security_group" "rds_shared" {
   }
 }
 
+data "aws_security_group" "ewf_fe_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-ewf-fe-asg*"]
+  }
+}
+
+data "aws_security_group" "ewf_fe_tux" {
+  filter {
+    name   = "tag:Name"
+    values = ["ewf-frontend-tuxedo-${var.environment}"]
+  }
+}
+
+data "aws_security_group" "ewf_bep_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-ewf-bep-asg*"]
+  }
+}
+
+data "aws_security_group" "fes_app_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-fes-app*"]
+  }
+}
+
 data "aws_route53_zone" "private_zone" {
   name         = local.internal_fqdn
   private_zone = true
@@ -34,6 +62,10 @@ data "aws_kms_key" "rds" {
 
 data "vault_generic_secret" "abbyy_rds" {
   path = "applications/${var.aws_profile}/abbyy/rds"
+}
+
+data "vault_generic_secret" "fes_rds" {
+  path = "applications/${var.aws_profile}/fes/rds"
 }
 
 data "vault_generic_secret" "internal_cidrs" {

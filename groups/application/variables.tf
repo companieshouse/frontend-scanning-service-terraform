@@ -121,8 +121,8 @@ variable "fes_app_cw_logs" {
 }
 
 variable "fes_app_release_version" {
- type        = string
- description = "Version of the application to download for deployment to frontend server(s)"
+  type        = string
+  description = "Version of the application to download for deployment to frontend server(s)"
 }
 
 # ------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ module "fes_app_ec2_security_group" {
   ]
   number_of_computed_ingress_with_source_security_group_id = 1
 
-  egress_rules        = ["all-all"]
+  egress_rules = ["all-all"]
 }
 
 resource "aws_cloudwatch_log_group" "fes_app" {
