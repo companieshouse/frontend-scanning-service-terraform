@@ -40,6 +40,13 @@ data "aws_security_group" "ewf_bep_asg" {
   }
 }
 
+data "aws_security_group" "fes_app_asg" {
+  filter {
+    name   = "group-name"
+    values = ["sgr-fes-app*"]
+  }
+}
+
 data "aws_route53_zone" "private_zone" {
   name         = local.internal_fqdn
   private_zone = true

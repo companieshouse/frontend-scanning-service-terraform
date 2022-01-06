@@ -42,6 +42,13 @@ module "fes_rds_security_group" {
       protocol                 = "tcp"
       description              = "Frontend Tuxedo EWF"
       source_security_group_id = data.aws_security_group.ewf_fe_tux.id
+    },
+    {
+      from_port                = 1521
+      to_port                  = 1521
+      protocol                 = "tcp"
+      description              = "Frontend Scanning App"
+      source_security_group_id = data.aws_security_group.fes_app_asg.id
     }
   ]
 
