@@ -57,7 +57,7 @@ fes_rds_onpremise_access = [
 
 multi_az                = false
 rds_maintenance_window  = "Thu:00:00-Thu:03:00"
-rds_backup_window       = "00:00-03:00"
+rds_backup_window       = "03:01-06:00"
 
 # RDS logging
 rds_log_exports = [
