@@ -1,7 +1,5 @@
-output "abbyy_rds_address" {
-  value = aws_route53_record.abbyy_rds.fqdn
-}
-
-output "fes_rds_address" {
-  value = aws_route53_record.fes_rds.fqdn
+output "rds_addresses" {
+  value = { for dns in aws_route53_record.rds :
+    dns.name => dns.fqdn
+  }
 }
