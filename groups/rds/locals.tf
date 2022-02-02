@@ -30,7 +30,7 @@ locals {
         }
       ] : [],
     )
-    "fes"   = [
+    "fes"   = concat([
       {
         from_port                = 1521
         to_port                  = 1521
@@ -51,7 +51,8 @@ locals {
         protocol                 = "tcp"
         description              = "Frontend Tuxedo EWF"
         source_security_group_id = data.aws_security_group.ewf_fe_tux.id
-      },
+      }
+    ],
       var.account != "hlive" ? [
         {
           from_port                = 1521
@@ -61,7 +62,7 @@ locals {
           source_security_group_id = data.aws_security_group.fes_app_asg[0].id
         }
       ] : [],
-    ]
+    )
   }
 
   internal_fqdn = format("%s.%s.aws.internal", split("-", var.aws_account)[1], split("-", var.aws_account)[0])
