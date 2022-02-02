@@ -41,9 +41,18 @@ data "aws_security_group" "ewf_bep_asg" {
 }
 
 data "aws_security_group" "fes_app_asg" {
+  count = var.account != "hlive" ? 1 : 0
   filter {
     name   = "group-name"
     values = ["sgr-fes-app*"]
+  }
+}
+
+data "aws_security_group" "abbyy_app" {
+  count = var.account != "hdev" ? 1 : 0
+  filter {
+    name   = "group-name"
+    values = ["sgr-windows-workloads-abbyy*"]
   }
 }
 
