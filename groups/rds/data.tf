@@ -19,40 +19,19 @@ data "aws_security_group" "rds_shared" {
   }
 }
 
-data "aws_security_group" "ewf_fe_asg" {
+data "aws_security_group" "rds_ingress_abbyy" {
+  count = length(var.rds_ingress_groups["abbyy"])
   filter {
     name   = "group-name"
-    values = ["sgr-ewf-fe-asg*"]
+    values = [var.rds_ingress_groups["abbyy"][count.index]]
   }
 }
 
-data "aws_security_group" "ewf_fe_tux" {
-  filter {
-    name   = "tag:Name"
-    values = ["ewf-frontend-tuxedo-${var.environment}"]
-  }
-}
-
-data "aws_security_group" "ewf_bep_asg" {
+data "aws_security_group" "rds_ingress_fes" {
+  count = length(var.rds_ingress_groups["fes"])
   filter {
     name   = "group-name"
-    values = ["sgr-ewf-bep-asg*"]
-  }
-}
-
-data "aws_security_group" "fes_app_asg" {
-  count = var.account != "hlive" ? 1 : 0
-  filter {
-    name   = "group-name"
-    values = ["sgr-fes-app*"]
-  }
-}
-
-data "aws_security_group" "abbyy_app" {
-  count = var.account != "hdev" ? 1 : 0
-  filter {
-    name   = "group-name"
-    values = ["sgr-windows-workloads-abbyy*"]
+    values = [var.rds_ingress_groups["fes"][count.index]]
   }
 }
 
@@ -79,4 +58,8 @@ data "vault_generic_secret" "fes_rds" {
 
 data "vault_generic_secret" "internal_cidrs" {
   path = "aws-accounts/network/internal_cidr_ranges"
+}
+
+data "vault_generic_secret" "chs_cidrs" {
+  path = "aws-accounts/network/${var.aws_account}/chs/application-subnets"
 }

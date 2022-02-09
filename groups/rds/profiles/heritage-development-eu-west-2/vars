@@ -155,3 +155,13 @@ parameter_group_settings = [
       value = "AUTO"
     },
 ]
+
+# Ingress security group patterns
+rds_ingress_groups = {
+  abbyy = [
+    "sgr-fes-app*"
+  ]
+  fes = [
+    "sgr-fes-app*"
+  ]
+}
