@@ -59,3 +59,7 @@ data "vault_generic_secret" "fes_rds" {
 data "vault_generic_secret" "internal_cidrs" {
   path = "aws-accounts/network/internal_cidr_ranges"
 }
+
+data "vault_generic_secret" "chs_cidrs" {
+  path = "aws-accounts/network/${var.aws_account}/chs/application-subnets"
+}

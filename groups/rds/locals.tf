@@ -4,6 +4,11 @@
 locals {
   admin_cidrs    = values(data.vault_generic_secret.internal_cidrs.data)
 
+  app_cidrs = {
+    "abbyy" = []
+    "fes" = values(data.vault_generic_secret.chs_cidrs.data)
+  }
+
   rds_data = {
     abbyy = data.vault_generic_secret.abbyy_rds.data
     fes   = data.vault_generic_secret.fes_rds.data
