@@ -156,4 +156,16 @@ parameter_group_settings = [
     },
 ]
 
-
+# Ingress security group patterns
+rds_ingress_groups = {
+  abbyy = [
+    "sgr-fes-app*",
+    "sgr-windows-workloads-abbyy*"
+  ]
+  fes = [
+    "sgr-ewf-fe-asg*",
+    "sgr-ewf-bep-asg*",
+    "ewf-frontend-tuxedo*",
+    "sgr-fes-app*"
+  ]
+}
