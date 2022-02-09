@@ -46,7 +46,8 @@ variable "rds_databases" {
 }
 
 variable "rds_ingress_groups" {
-  type = map
+  type        = map(list(string))
+  description = "A map whose keys represent RDS instances and whose values are lists of strings representing security group filter patterns"
 }
 
 variable "parameter_group_settings" {
