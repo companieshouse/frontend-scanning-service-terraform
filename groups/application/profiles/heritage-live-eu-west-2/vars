@@ -20,41 +20,41 @@ fes_app_desired_capacity = 1
 fes_app_cw_logs = {
   "audit.log" = {
     file_path = "/var/log/audit"
-    log_group_retention = 7
+    log_group_retention = 180
   }
   
   "messages" = {
     file_path = "/var/log"
-    log_group_retention = 7
+    log_group_retention = 180
   }
   
   "secure" = {
     file_path = "/var/log"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 
   "yum.log" = {
     file_path = "/var/log"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 
   "errors.log" = {
     file_path = "/var/log/amazon/ssm"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 
   "amazon-ssm-agent.log" = {
     file_path = "/var/log/amazon/ssm"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 
   "catalina.out" = {
     file_path = "/opt/tomcat/latest/logs"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 
   "fes.log" = {
     file_path = "/opt/tomcat/latest/logs"
-    log_group_retention = 7
+    log_group_retention = 180
   }
 }
