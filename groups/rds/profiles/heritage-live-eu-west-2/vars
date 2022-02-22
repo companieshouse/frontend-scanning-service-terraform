@@ -50,7 +50,8 @@ rds_databases = {
 }
 
 # Parameter group settings
-parameter_group_settings = [
+parameter_group_settings = {
+  abbyy = [
     {
       name  = "aq_tm_processes"
       value = "6"
@@ -120,7 +121,8 @@ parameter_group_settings = [
       name  = "workarea_size_policy"
       value = "AUTO"
     },
-]
+  ]
+}
 
 # Ingress security group patterns
 rds_ingress_groups = {
