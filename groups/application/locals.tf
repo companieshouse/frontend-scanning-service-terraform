@@ -24,6 +24,7 @@ locals {
   fes_app_ansible_inputs = {
     s3_bucket_releases         = local.s3_releases["release_bucket_name"]
     s3_bucket_configs          = local.s3_releases["config_bucket_name"]
+    s3_bucket_resources        = local.s3_releases["resources_bucket_name"]
     heritage_environment       = var.environment
     version                    = var.fes_app_release_version
     default_nfs_server_address = var.nfs_server
