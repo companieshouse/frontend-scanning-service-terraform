@@ -93,13 +93,29 @@ module "fes_app_internal_alb" {
 }
 
 #--------------------------------------------
-# internal ALB CloudWatch Merics
+# Internal ALB CloudWatch Alarms
 #--------------------------------------------
-module "internal_alb_metrics" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/alb-metrics?ref=tags/1.0.26"
+module "internal_alb_alarms" {
+  source = "git@github.com:companieshouse/terraform-modules//aws/alb-cloudwatch-alarms?ref=tags/1.0.103"
 
-  load_balancer_id = module.fes_app_internal_alb.this_lb_id
-  target_group_ids = module.fes_app_internal_alb.target_group_arns
+  alb_arn_suffix            = module.fes_app_internal_alb.this_lb_arn_suffix
+  target_group_arn_suffixes = module.fes_app_internal_alb.target_group_arn_suffixes
 
-  depends_on = [module.fes_app_internal_alb]
+  prefix                  = "fes-frontend-"
+  response_time_threshold = "100"
+  evaluation_periods      = "3"
+  statistic_period        = "60"
+  maximum_4xx_threshold   = "2"
+  maximum_5xx_threshold   = "2"
+  actions_alarm = [
+    module.cloudwatch_sns_notifications.sns_topic_arn
+  ]
+  actions_ok = [
+    module.cloudwatch_sns_notifications.sns_topic_arn
+  ]
+
+  depends_on = [
+    module.cloudwatch_sns_notifications,
+    module.ceu_internal_alb
+  ]
 }
