@@ -118,7 +118,7 @@ module "fes_app_asg" {
 module "asg_alarms" {
   source = "git@github.com:companieshouse/terraform-modules//aws/asg-cloudwatch-alarms?ref=tags/1.0.103"
 
-  autoscaling_group_name = module.fe_asg.this_autoscaling_group_name
+  autoscaling_group_name = module.fe_app_asg.this_autoscaling_group_name
   prefix                 = "${var.application}-fe-asg-alarms"
 
   in_service_evaluation_periods      = "3"
@@ -143,6 +143,6 @@ module "asg_alarms" {
 
   depends_on = [
     module.cloudwatch_sns_notifications,
-    module.fe_asg
+    module.fe_app_asg
   ]
 }

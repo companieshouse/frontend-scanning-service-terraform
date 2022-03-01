@@ -116,6 +116,6 @@ module "internal_alb_alarms" {
 
   depends_on = [
     module.cloudwatch_sns_notifications,
-    module.ceu_internal_alb
+    module.fes_app_internal_alb
   ]
 }
