@@ -4,7 +4,7 @@ aws_region  = "eu-west-2"
 aws_account = "heritage-live"
 
 # Account shorthand
-account = "hstg"
+account = "hlive"
 region  = "euw2"
 
 # Application details
