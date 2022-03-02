@@ -8,6 +8,7 @@ locals {
   security_kms_keys_data = data.vault_generic_secret.security_kms_keys.data
   logs_kms_key_id        = local.kms_keys_data["logs"]
   ssm_kms_key_id         = local.security_kms_keys_data["session-manager-kms-key-arn"]
+  sns_kms_key_id         = local.kms_keys_data["sns"]
 
   security_s3_data            = data.vault_generic_secret.security_s3_buckets.data
   session_manager_bucket_name = local.security_s3_data["session-manager-bucket-name"]
