@@ -6,6 +6,11 @@ data "aws_vpc" "vpc" {
   }
 }
 
+data "aws_subnet" "application" {
+  for_each = data.aws_subnet_ids.application.ids
+  id       = each.value
+}
+
 data "aws_subnet_ids" "web" {
   vpc_id = data.aws_vpc.vpc.id
   filter {
