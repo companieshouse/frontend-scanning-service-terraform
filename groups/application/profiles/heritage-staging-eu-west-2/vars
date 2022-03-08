@@ -12,7 +12,7 @@ application = "fes"
 environment = "staging"
 
 # Frontend ASG settings
-fes_app_instance_size = "t3.xlarge"
+fes_app_instance_size = "m4.xlarge"
 fes_app_min_size = 1
 fes_app_max_size = 1
 fes_app_desired_capacity = 1
