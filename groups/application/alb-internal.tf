@@ -9,7 +9,7 @@ module "fes_app_internal_alb_security_group" {
   description = "Security group for the ${var.application} web servers"
   vpc_id      = data.aws_vpc.vpc.id
 
-  ingress_cidr_blocks = local.internal_cidrs
+  ingress_cidr_blocks = concat(local.internal_cidrs, local.application_subnet_cidrs)
   ingress_rules       = ["http-80-tcp", "https-443-tcp"]
   egress_rules        = ["all-all"]
 }

@@ -1,8 +1,9 @@
 locals {
-  internal_cidrs = values(data.vault_generic_secret.internal_cidrs.data)
-  s3_releases    = data.vault_generic_secret.s3_releases.data
-  fes_ec2_data   = data.vault_generic_secret.fes_ec2_data.data
-  fes_app_data   = data.vault_generic_secret.fes_app_data.data_json
+  internal_cidrs            = values(data.vault_generic_secret.internal_cidrs.data)
+  application_subnet_cidrs  = [for s in data.aws_subnet.application : s.cidr_block]
+  s3_releases               = data.vault_generic_secret.s3_releases.data
+  fes_ec2_data              = data.vault_generic_secret.fes_ec2_data.data
+  fes_app_data              = data.vault_generic_secret.fes_app_data.data_json
 
   kms_keys_data          = data.vault_generic_secret.kms_keys.data
   security_kms_keys_data = data.vault_generic_secret.security_kms_keys.data
