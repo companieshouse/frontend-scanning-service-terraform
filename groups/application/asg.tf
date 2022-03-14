@@ -35,15 +35,14 @@ resource "aws_cloudwatch_log_group" "fes_app" {
   )
 }
 
-# ASG Scheduled Shutdown for non-production
+# ASG Scheduled Shutdown
 resource "aws_autoscaling_schedule" "fes-schedule-stop" {
-  count = var.environment == "live" ? 0 : 1
 
   scheduled_action_name  = "${var.aws_account}-${var.application}-app-scheduled-shutdown"
   min_size               = 0
   max_size               = 0
   desired_capacity       = 0
-  recurrence             = "00 20 * * 1-5" #Mon-Fri at 8pm
+  recurrence             = var.fes_app_scaling_schedule_stop
   autoscaling_group_name = module.fes_app_asg.this_autoscaling_group_name
 }
 
@@ -54,7 +53,7 @@ resource "aws_autoscaling_schedule" "fes-schedule-start" {
   min_size               = var.fes_app_min_size
   max_size               = var.fes_app_max_size
   desired_capacity       = var.fes_app_desired_capacity
-  recurrence             = var.fes_app_scaling_schedule
+  recurrence             = var.fes_app_scaling_schedule_start
   autoscaling_group_name = module.fes_app_asg.this_autoscaling_group_name
 }
 
