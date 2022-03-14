@@ -16,6 +16,9 @@ fes_app_instance_size = "m4.xlarge"
 fes_app_min_size = 1
 fes_app_max_size = 1
 fes_app_desired_capacity = 1
+fes_app_scaling_schedule_stop = "00 20 * * 1-5"
+fes_app_scaling_schedule_start = "00 06 * * 1-5"
+
 
 fes_app_cw_logs = {
   "audit.log" = {

@@ -94,6 +94,16 @@ variable "fes_app_desired_capacity" {
   description = "The desired capacity of ASG"
 }
 
+variable "fes_app_scaling_schedule_stop" {
+  type        = string
+  description = "The schedule for scaling  the ASG"
+}
+
+variable "fes_app_scaling_schedule_start" {
+  type        = string
+  description = "The schedule for scaling the ASG"
+}
+
 # ------------------------------------------------------------------------------
 # FES EC2 Variables
 # ------------------------------------------------------------------------------
