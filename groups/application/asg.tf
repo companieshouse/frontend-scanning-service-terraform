@@ -55,7 +55,7 @@ resource "aws_autoscaling_schedule" "fes-schedule-start" {
   min_size               = var.fes_app_min_size
   max_size               = var.fes_app_max_size
   desired_capacity       = var.fes_app_desired_capacity
-  recurrence             = "00 06 * * 1-5" #Mon-Fri at 6am
+  recurrence             = var.fes_app_scaling_schedule
   autoscaling_group_name = module.fes_app_asg.this_autoscaling_group_name
 }
 
