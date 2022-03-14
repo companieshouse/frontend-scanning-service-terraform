@@ -47,9 +47,8 @@ resource "aws_autoscaling_schedule" "fes-schedule-stop" {
   autoscaling_group_name = module.fes_app_asg.this_autoscaling_group_name
 }
 
-# ASG Scheduled Startup for non-production
+# ASG Scheduled Startup
 resource "aws_autoscaling_schedule" "fes-schedule-start" {
-  count = var.environment == "live" ? 0 : 1
 
   scheduled_action_name  = "${var.aws_account}-${var.application}-app-scheduled-startup"
   min_size               = var.fes_app_min_size
