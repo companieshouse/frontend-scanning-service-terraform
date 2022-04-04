@@ -233,7 +233,8 @@ parameter_group_settings = {
 rds_ingress_groups = {
   abbyy = [
     "sgr-fes-app*",
-    "sgr-windows-workloads-abbyy*"
+    "sgr-windows-workloads-abbyy*",
+    "sgr-windows-workloads-doc-sim*"
   ]
   fes = [
     "sgr-fes-app*"
