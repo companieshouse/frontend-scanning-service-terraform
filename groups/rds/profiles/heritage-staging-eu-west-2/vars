@@ -237,6 +237,8 @@ rds_ingress_groups = {
     "sgr-windows-workloads-doc-sim*"
   ]
   fes = [
-    "sgr-fes-app*"
+    "sgr-fes-app*",
+    "sgr-windows-workloads-abbyy*",
+    "sgr-windows-workloads-doc-sim*"
   ]
 }
