@@ -17,7 +17,7 @@ rds_databases = {
     multi_az                   = true
     engine                     = "oracle-se2"
     major_engine_version       = "12.1"
-    engine_version             = "12.1.0.2.v25"
+    engine_version             = "12.1.0.2.v26"
     auto_minor_version_upgrade = true
     license_model              = "license-included"
     rds_maintenance_window     = "Sat:10:00-Sat:13:00"
@@ -54,7 +54,7 @@ rds_databases = {
     multi_az                   = true
     engine                     = "oracle-se2"
     major_engine_version       = "12.1"
-    engine_version             = "12.1.0.2.v25"
+    engine_version             = "12.1.0.2.v26"
     auto_minor_version_upgrade = true
     license_model              = "license-included"
     rds_maintenance_window     = "Sat:10:00-Sat:13:00"
@@ -234,9 +234,15 @@ rds_ingress_groups = {
   abbyy = [
     "sgr-windows-workloads-abbyy*",
     "sgr-windows-workloads-smart_vault_1*",
-    "sgr-windows-workloads-smart_vault_2*"
+    "sgr-windows-workloads-smart_vault_2*",
+    "sgr-fes-app*",
+    "sgr-windows-workloads-ewok-lic-second*",
+    "sgr-windows-workloads-ewok-lic-backup*"
   ]
   fes = [
-    "sgr-fes-app*"
+    "sgr-fes-app*",
+    "sgr-windows-workloads-abbyy*",
+    "sgr-windows-workloads-ewok-lic-second*",
+    "sgr-windows-workloads-ewok-lic-backup*"
   ]
 }
