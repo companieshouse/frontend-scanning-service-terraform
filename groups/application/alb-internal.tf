@@ -107,12 +107,11 @@ module "internal_alb_alarms" {
   statistic_period        = "60"
   maximum_4xx_threshold   = "2"
   maximum_5xx_threshold   = "2"
-  actions_alarm = [
-    module.cloudwatch_sns_notifications.sns_topic_arn
-  ]
-  actions_ok = [
-    module.cloudwatch_sns_notifications.sns_topic_arn
-  ]
+
+  # If actions are used then all alarms will have these applied, do not add any actions which you only want to be used for specific alarms
+  # The module has lifecycle hooks to ignore changes via the AWS Console so in this use case the alarm can be modified there.
+  actions_alarm = var.enable_sns_topic ? [module.cloudwatch_sns_notifications[0].sns_topic_arn] : []
+  actions_ok    = var.enable_sns_topic ? [module.cloudwatch_sns_notifications[0].sns_topic_arn] : []
 
   depends_on = [
     module.cloudwatch_sns_notifications,

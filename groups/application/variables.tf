@@ -63,6 +63,12 @@ variable "domain_name" {
   description = "Domain Name for ACM Certificate"
 }
 
+variable "enable_sns_topic" {
+  type        = bool
+  description = "A boolean value to alter deployment of an SNS topic for CloudWatch actions"
+  default     = false
+}
+
 # ------------------------------------------------------------------------------
 # FES Frontend Variables - ALB 
 # ------------------------------------------------------------------------------
@@ -134,6 +140,7 @@ variable "fes_app_release_version" {
   type        = string
   description = "Version of the application to download for deployment to frontend server(s)"
 }
+
 
 # ------------------------------------------------------------------------------
 # NFS Variables
