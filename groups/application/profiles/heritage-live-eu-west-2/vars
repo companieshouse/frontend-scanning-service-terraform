@@ -19,7 +19,7 @@ fes_app_desired_capacity = 1
 fes_app_scaling_schedule_stop = "55 05 * * 1"
 fes_app_scaling_schedule_start = "00 06 * * 1"
 
-enable_sns_topic = true
+enable_sns_topic = "true"
 
 fes_app_cw_logs = {
   "audit.log" = {
