@@ -246,3 +246,16 @@ rds_ingress_groups = {
     "sgr-windows-workloads-ewok-lic-backup*"
   ]
 }
+
+rds_start_stop_schedule = {
+  abbyy = {
+    rds_schedule_enable = false
+    rds_start_schedule = ""
+    rds_stop_schedule = ""
+  },
+  fes = {
+    rds_schedule_enable = false
+    rds_start_schedule = ""
+    rds_stop_schedule = ""
+  }
+}
