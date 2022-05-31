@@ -242,3 +242,16 @@ rds_ingress_groups = {
     "sgr-fes-app*"
   ]
 }
+
+rds_start_stop_schedule = {
+  abbyy = {
+    rds_schedule_enable = true
+    rds_start_schedule = "cron(0 5 * * ? *)"
+    rds_stop_schedule = "cron(0 21 * * ? *)"
+  },
+  fes = {
+    rds_schedule_enable = true
+    rds_start_schedule = "cron(0 5 * * ? *)"
+    rds_stop_schedule = "cron(0 21 * * ? *)"
+  }
+}

@@ -250,3 +250,16 @@ rds_ingress_groups = {
     "sgr-windows-workloads-doc-sim*"
   ]
 }
+
+rds_start_stop_schedule = {
+  abbyy = {
+    rds_schedule_enable = true
+    rds_start_schedule = "cron(0 4 * * ? *)"
+    rds_stop_schedule = "cron(0 21 * * ? *)"
+  },
+  fes = {
+    rds_schedule_enable = true
+    rds_start_schedule = "cron(0 3 * * ? *)"
+    rds_stop_schedule = "cron(0 21 * * ? *)"
+  }
+}
