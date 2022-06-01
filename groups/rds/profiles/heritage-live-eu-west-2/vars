@@ -11,9 +11,6 @@ environment = "live"
 # RDS settings
 rds_databases = {
   abbyy = {
-    apply_immediately = false
-    allow_major_version_upgrade = false
-
     instance_class             = "db.m5.large"
     allocated_storage          = 25
     backup_retention_period    = 14
@@ -51,9 +48,6 @@ rds_databases = {
     ]
   },
   fes = {
-    apply_immediately = false
-    allow_major_version_upgrade = false
-
     instance_class             = "db.m5.large"
     allocated_storage          = 300
     backup_retention_period    = 14
