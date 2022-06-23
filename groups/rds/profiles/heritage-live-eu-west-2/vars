@@ -247,7 +247,9 @@ rds_ingress_groups = {
     "sgr-fes-app*",
     "sgr-windows-workloads-abbyy*",
     "sgr-windows-workloads-ewok-lic-second*",
-    "sgr-windows-workloads-ewok-lic-backup*"
+    "sgr-windows-workloads-ewok-lic-backup*",
+    "sgr-chips-oltp-db*",
+    "sgr-chips-rep-db*"
   ]
 }
 
