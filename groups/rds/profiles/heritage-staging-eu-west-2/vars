@@ -263,3 +263,16 @@ rds_start_stop_schedule = {
     rds_stop_schedule = "cron(0 21 * * ? *)"
   }
 }
+
+rds_cloudwatch_alarms = {
+  abbyy = {
+    alarm_actions_enabled = false
+    alarm_topic_name = ""
+    alarm_topic_name_ooh = ""
+  },
+  fes = {
+    alarm_actions_enabled = false
+    alarm_topic_name = ""
+    alarm_topic_name_ooh = ""
+  }
+}
