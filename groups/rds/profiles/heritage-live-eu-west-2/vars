@@ -272,12 +272,12 @@ rds_start_stop_schedule = {
 
 rds_cloudwatch_alarms = {
   abbyy = {
-    alarm_actions_enabled = false
+    alarm_actions_enabled = true
     alarm_topic_name = "Email_Alerts"
     alarm_topic_name_ooh = "Phonecall_Alerts"
   },
   fes = {
-    alarm_actions_enabled = false
+    alarm_actions_enabled = true
     alarm_topic_name = "Email_Alerts"
     alarm_topic_name_ooh = "Phonecall_Alerts"
   }
