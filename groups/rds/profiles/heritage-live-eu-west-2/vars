@@ -253,7 +253,8 @@ rds_ingress_groups = {
     "sgr-windows-workloads-ewok-lic-second*",
     "sgr-windows-workloads-ewok-lic-backup*",
     "sgr-chips-oltp-db*",
-    "sgr-chips-rep-db*"
+    "sgr-chips-rep-db*",
+    "sgr-windows-workloads-bus-obj*"
   ]
 }
 
