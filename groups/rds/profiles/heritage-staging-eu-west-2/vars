@@ -49,7 +49,7 @@ rds_databases = {
   },
   fes = {
     instance_class             = "db.m5.large"
-    allocated_storage          = 300
+    allocated_storage          = 501
     backup_retention_period    = 2
     multi_az                   = false
     engine                     = "oracle-se2"
@@ -247,7 +247,8 @@ rds_ingress_groups = {
   fes = [
     "sgr-fes-app*",
     "sgr-windows-workloads-abbyy*",
-    "sgr-windows-workloads-doc-sim*"
+    "sgr-windows-workloads-doc-sim*",
+    "sgr-windows-workloads-bus-obj*"
   ]
 }
 
