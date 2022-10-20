@@ -96,17 +96,18 @@ module "fes_app_internal_alb" {
 # Internal ALB CloudWatch Alarms
 #--------------------------------------------
 module "internal_alb_alarms" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/alb-cloudwatch-alarms?ref=tags/1.0.103"
+  source = "git@github.com:companieshouse/terraform-modules//aws/alb-cloudwatch-alarms?ref=tags/1.0.180"
 
   alb_arn_suffix            = module.fes_app_internal_alb.this_lb_arn_suffix
   target_group_arn_suffixes = module.fes_app_internal_alb.target_group_arn_suffixes
 
   prefix                  = "fes-frontend-"
-  response_time_threshold = "100"
-  evaluation_periods      = "3"
-  statistic_period        = "60"
-  maximum_4xx_threshold   = "2"
-  maximum_5xx_threshold   = "2"
+  response_time_threshold   = "100"
+  evaluation_periods        = "3"
+  statistic_period          = "60"
+  maximum_4xx_threshold     = "5"
+  maximum_5xx_threshold     = "5"
+  tls_negotiation_threshold = "5"
 
   # If actions are used then all alarms will have these applied, do not add any actions which you only want to be used for specific alarms
   # The module has lifecycle hooks to ignore changes via the AWS Console so in this use case the alarm can be modified there.
