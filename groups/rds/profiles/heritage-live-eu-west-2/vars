@@ -37,6 +37,19 @@ rds_databases = {
     ]
     per_instance_options = [
       {
+        option_name = "JVM"
+      },
+      {
+        option_name = "SQLT"
+        version     = "2018-07-25.v1"
+        option_settings = [
+          {
+            name  = "LICENSE_PACK"
+            value = "N"
+          },
+        ]
+      },
+      {
         option_name = "Timezone"
         option_settings = [
           {
@@ -70,6 +83,19 @@ rds_databases = {
       "192.168.90.0/24"
     ]
     per_instance_options = [
+      {
+        option_name = "JVM"
+      },
+      {
+        option_name = "SQLT"
+        version     = "2018-07-25.v1"
+        option_settings = [
+          {
+            name  = "LICENSE_PACK"
+            value = "N"
+          },
+        ]
+      },
       {
         option_name = "Timezone"
         option_settings = [
