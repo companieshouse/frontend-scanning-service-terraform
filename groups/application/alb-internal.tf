@@ -108,6 +108,7 @@ module "internal_alb_alarms" {
   maximum_4xx_threshold     = "5"
   maximum_5xx_threshold     = "5"
   tls_negotiation_threshold = "5"
+  unhealthy_hosts_threshold = "0"
 
   # If actions are used then all alarms will have these applied, do not add any actions which you only want to be used for specific alarms
   # The module has lifecycle hooks to ignore changes via the AWS Console so in this use case the alarm can be modified there.
