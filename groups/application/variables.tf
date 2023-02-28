@@ -81,7 +81,7 @@ variable "fes_app_service_port" {
 
 variable "fes_app_health_check_path" {
   type        = string
-  default     = "/"
+  default     = "/FES/faces/login.xhtml"
   description = "Target group health check path"
 }
 
