@@ -269,7 +269,8 @@ rds_ingress_groups = {
     "sgr-windows-workloads-abbyy*",
     "sgr-windows-workloads-doc-sim*",
     "sgr-windows-workloads-bus-obj*",
-    "sgr-chips-db-batch-asg-001-*"
+    "sgr-chips-db-batch-asg-001-*",
+    "sgr-chips-rep-db*"
   ]
 }
 
