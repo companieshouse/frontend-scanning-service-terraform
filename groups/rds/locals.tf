@@ -37,6 +37,21 @@ locals {
 
   internal_fqdn = format("%s.%s.aws.internal", split("-", var.aws_account)[1], split("-", var.aws_account)[0])
 
+  fes_dba_dev_ingress_cidrs_list = jsondecode(data.vault_generic_secret.fes_rds.data_json)["dba-dev-cidrs"]
+
+  dba_dev_ingress_instances_map = {
+    fes = local.fes_dba_dev_ingress_cidrs_list,
+  }
+
+  dba_dev_ingress_rules_map = merge([
+    for instance, cidrs in local.dba_dev_ingress_instances_map : {
+      for idx, cidr in cidrs : "${instance}_${idx}" => {
+        cidr  = cidr
+        sg_id = module.rds_security_group[instance].this_security_group_id
+      }
+    }
+  ]...)
+
   default_tags = {
     Terraform = "true"
     Region    = var.aws_region
