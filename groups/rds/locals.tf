@@ -40,7 +40,7 @@ locals {
   fes_dba_dev_ingress_cidrs_list = jsondecode(data.vault_generic_secret.fes_rds.data_json)["dba-dev-cidrs"]
 
   dba_dev_ingress_instances_map = {
-    fes    = local.fes_dba_dev_ingress_cidrs_list,
+    fes = local.fes_dba_dev_ingress_cidrs_list,
   }
 
   dba_dev_ingress_rules_map = merge([
