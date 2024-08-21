@@ -274,7 +274,7 @@ rds_ingress_groups = {
     "sgr-windows-workloads-ewok-lic-backup*",
     "sgr-chips-oltp-db*",
     "sgr-chips-rep-db*",
-    "sgr-windows-workloads-bus-obj*",
+    "sgr-windows-workloads-bus-obj-1-server*",
     "sgr-chips-db-batch-asg-001-*"
   ]
 }
