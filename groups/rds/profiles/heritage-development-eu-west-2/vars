@@ -266,7 +266,8 @@ rds_ingress_groups = {
     "sgr-fes-app*"
   ]
   fes = [
-    "sgr-fes-app*"
+    "sgr-fes-app*",
+    "sgr-chips-db-batch-asg-001-*"
   ]
 }
 
