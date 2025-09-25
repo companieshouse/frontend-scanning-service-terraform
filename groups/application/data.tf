@@ -112,7 +112,7 @@ data "template_cloudinit_config" "fes_app_userdata_config" {
 }
 
 data "aws_ami" "fes_app" {
-  owners      = [data.vault_generic_secret.account_ids.data["development"]]
+  owners      = [data.vault_generic_secret.account_ids.data["shared-services"]]
   most_recent = var.ami_name == "fes-frontend-*" ? true : false
 
   filter {
