@@ -55,7 +55,7 @@ data "vault_generic_secret" "security_s3_buckets" {
 }
 
 data "vault_generic_secret" "s3_releases" {
-  path = "aws-accounts/shared-services/s3"
+  path = local.s3_releases_path
 }
 
 data "vault_generic_secret" "internal_cidrs" {
