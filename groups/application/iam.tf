@@ -28,12 +28,12 @@ module "fes_app_profile" {
       sid    = "AllowAccessToReleaseBucket",
       effect = "Allow",
       resources = [
-        "arn:aws:s3:::shared-services.eu-west-2.releases.ch.gov.uk/*",
-        "arn:aws:s3:::shared-services.eu-west-2.releases.ch.gov.uk",
-        "arn:aws:s3:::shared-services.eu-west-2.configs.ch.gov.uk/*",
-        "arn:aws:s3:::shared-services.eu-west-2.configs.ch.gov.uk",
-        "arn:aws:s3:::shared-services.eu-west-2.resources.ch.gov.uk/*",
-        "arn:aws:s3:::shared-services.eu-west-2.resources.ch.gov.uk"
+        "arn:aws:s3:::${local.s3_releases["release_bucket_name"]}/*",
+        "arn:aws:s3:::${local.s3_releases["release_bucket_name"]}",
+        "arn:aws:s3:::${local.s3_releases["config_bucket_name"]}/*",
+        "arn:aws:s3:::${local.s3_releases["config_bucket_name"]}",
+        "arn:aws:s3:::${local.s3_releases["resources_bucket_name"]}/*",
+        "arn:aws:s3:::${local.s3_releases["resources_bucket_name"]}"
       ],
       actions = [
         "s3:Get*",
