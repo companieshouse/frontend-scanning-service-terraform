@@ -4,7 +4,7 @@
 locals {
 
   app_cidrs = {
-    "abbyy" = []
+    "abbyy" = values(data.vault_generic_secret.chs_cidrs_staging.data)
     "fes" = values(data.vault_generic_secret.chs_cidrs.data)
   }
 
