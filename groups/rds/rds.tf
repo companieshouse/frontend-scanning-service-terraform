@@ -11,17 +11,9 @@ module "rds_security_group" {
   description = format("Security group for the ${each.key} RDS database")
   vpc_id      = data.aws_vpc.vpc.id
 
-  ingress_cidr_blocks = concat(local.admin_cidrs, each.value.rds_onpremise_access, local.app_cidrs[each.key])
+  ingress_cidr_blocks = local.app_cidrs[each.key]
   ingress_rules       = ["oracle-db-tcp"]
-  ingress_with_cidr_blocks = [
-    {
-      from_port   = 5500
-      to_port     = 5500
-      protocol    = "tcp"
-      description = "Oracle Enterprise Manager"
-      cidr_blocks = join(",", concat(local.admin_cidrs, each.value.rds_onpremise_access))
-    }
-  ]
+
   ingress_with_source_security_group_id = local.rds_ingress_from_services[each.key]
 
   egress_rules = ["all-all"]
@@ -38,6 +30,29 @@ resource "aws_security_group_rule" "dba_dev_ingress" {
   security_group_id = each.value.sg_id
 }
 
+resource "aws_security_group_rule" "admin_ingress_db" {
+  for_each = var.rds_databases
+
+  description       = "Permit Oracle DB access from admin prefix list"
+  type              = "ingress"
+  from_port         = 1521
+  to_port           = 1521
+  protocol          = "tcp"
+  prefix_list_ids   = [data.aws_ec2_managed_prefix_list.admin.id]
+  security_group_id = module.rds_security_group[each.key].this_security_group_id
+}
+
+resource "aws_security_group_rule" "admin_ingress_oem" {
+  for_each = var.rds_databases
+
+  description       = "Permit Oracle Enterprise Manager access from admin ranges"
+  type              = "ingress"
+  from_port         = 5500
+  to_port           = 5500
+  protocol          = "tcp"
+  prefix_list_ids   = [data.aws_ec2_managed_prefix_list.admin.id]
+  security_group_id = module.rds_security_group[each.key].this_security_group_id
+}
 
 # ------------------------------------------------------------------------------
 # RDS Instance

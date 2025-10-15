@@ -28,13 +28,6 @@ rds_databases = {
           "listener",
           "trace"
     ]
-    rds_onpremise_access = [
-      "10.65.2.0/24",
-      "10.65.66.0/24",
-      "10.65.130.0/24",
-      "192.168.70.0/24",
-      "192.168.90.0/24"
-    ]
     per_instance_options = [
       {
         option_name = "SQLT"
@@ -74,10 +67,6 @@ rds_databases = {
           "audit",
           "listener",
           "trace"
-    ]
-    rds_onpremise_access = [
-      "192.168.70.0/24",
-      "192.168.90.0/24"
     ]
     per_instance_options = [
       {
