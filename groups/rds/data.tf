@@ -61,7 +61,7 @@ data "vault_generic_secret" "chs_cidrs" {
 }
 
 data "vault_generic_secret" "chs_cidrs_staging" {
-  path = "aws-accounts/network/heritage-development/chs/application-subnets"
+  path = "aws-accounts/network/heritage-staging/chs/application-subnets"
 }
 
 data "aws_ec2_managed_prefix_list" "admin" {
