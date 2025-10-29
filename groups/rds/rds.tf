@@ -14,6 +14,16 @@ module "rds_security_group" {
   ingress_cidr_blocks = local.app_cidrs[each.key]
   ingress_rules       = ["oracle-db-tcp"]
 
+    ingress_with_cidr_blocks = [
+    {
+      from_port   = 5500
+      to_port     = 5500
+      protocol    = "tcp"
+      description = "Oracle Enterprise Manager"
+      cidr_blocks = join(",", local.app_cidrs["abbyy"])
+    }
+  ]
+
   ingress_with_source_security_group_id = local.rds_ingress_from_services[each.key]
 
   egress_rules = ["all-all"]
