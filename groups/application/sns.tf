@@ -8,12 +8,7 @@ module "cloudwatch_sns_notifications" {
   display_name      = "${var.application}-cloudwatch-alarms-for-emails"
   kms_master_key_id = local.sns_kms_key_id
 
-  tags = merge(
-    local.default_tags,
-    map(
-      "ServiceTeam", "${upper(var.application)}-FE-Support"
-    )
-  )
+  tags = local.default_tags
 }
 
 module "cloudwatch_sns_ooh" {
@@ -26,10 +21,5 @@ module "cloudwatch_sns_ooh" {
   display_name      = "${var.application}-cloudwatch-alarms-for-ooh"
   kms_master_key_id = local.sns_kms_key_id
 
-  tags = merge(
-    local.default_tags,
-    map(
-      "ServiceTeam", "${upper(var.application)}-FE-Support"
-    )
-  )
+  tags = local.default_tags
 }
