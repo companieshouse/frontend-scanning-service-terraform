@@ -27,12 +27,7 @@ resource "aws_cloudwatch_log_group" "fes_app" {
   retention_in_days = lookup(each.value, "log_group_retention", var.fes_app_default_log_group_retention_in_days)
   kms_key_id        = lookup(each.value, "kms_key_id", local.logs_kms_key_id)
 
-  tags = merge(
-    local.default_tags,
-    map(
-      "ServiceTeam", "${upper(var.application)}-Support"
-    )
-  )
+  tags = local.default_tags
 }
 
 # ASG Scheduled Shutdown
@@ -97,12 +92,7 @@ module "fes_app_asg" {
   iam_instance_profile           = module.fes_app_profile.aws_iam_instance_profile.name
   user_data_base64               = data.template_cloudinit_config.fes_app_userdata_config.rendered
 
-  tags_as_map = merge(
-    local.default_tags,
-    map(
-      "ServiceTeam", "${upper(var.application)}-Support"
-    )
-  )
+  tags_as_map = local.default_tags
 
   depends_on = [
     module.fes_app_internal_alb

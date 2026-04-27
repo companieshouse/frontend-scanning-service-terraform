@@ -84,12 +84,7 @@ module "fes_app_internal_alb" {
     },
   ]
 
-  tags = merge(
-    local.default_tags,
-    map(
-      "ServiceTeam", "${upper(var.application)}-Support"
-    )
-  )
+  tags = local.default_tags
 }
 
 #--------------------------------------------

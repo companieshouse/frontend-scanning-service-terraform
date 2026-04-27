@@ -44,5 +44,6 @@ locals {
     Region      = var.aws_region
     Account     = var.aws_account
     Service     = "CHIPS"
+    ServiceTeam = "CSI"
   }
 }
